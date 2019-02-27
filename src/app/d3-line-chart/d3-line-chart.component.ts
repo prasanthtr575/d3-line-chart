@@ -29,6 +29,7 @@ export class D3LineChartComponent implements OnInit {
       .range([height, 0]);
     const line = d3
       .line()
+      .defined(d => d)
       .x(d => x(d.year))
       .y(d => y(d.population));
 
@@ -115,16 +116,16 @@ export class D3LineChartComponent implements OnInit {
       const year =
         Math.floor((x.invert(d3.mouse(tipBox.node())[0]) + 5) / 10) * 10;
 
-      states.sort((a, b) => {
+      /* states.sort((a, b) => {
         return (
           b.history.find(h => h.year == year).population -
           a.history.find(h => h.year == year).population
         );
-      });
+      }); */
 
       states.forEach((state, i) => {
         for (let h of state.history) {
-          if (h.year === year) {
+          if (h && h.year === year) {
             let p = h.population;
 
             let posY = y(p);
@@ -157,9 +158,20 @@ export class D3LineChartComponent implements OnInit {
         .enter()
         .append("div")
         .style("color", d => d.color)
-        .html(
-          d => d.name + ": " + d.history.find(h => h.year == year).population
-        );
+        .html(d => {
+          //d.name + ": " + d.history.find(h => h.year == year).population;
+
+          let name = d.name;
+          let msg = "";
+
+          for (let h of d.history) {
+            if (h && h.year === year) {
+              msg = name + ": " + h.population;
+            }
+          }
+
+          return msg;
+        });
     }
   }
 }

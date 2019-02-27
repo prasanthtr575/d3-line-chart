@@ -13,18 +13,7 @@ export const jsonData = [
         year: 1920,
         population: 3426861
       },
-      {
-        year: 1930,
-        population: 5677251
-      },
-      {
-        year: 1940,
-        population: 6907387
-      },
-      {
-        year: 1950,
-        population: 10586223
-      },
+      null,
       {
         year: 1960,
         population: 15717204
@@ -77,22 +66,10 @@ export const jsonData = [
         year: 1950,
         population: 6371766
       },
-      {
-        year: 1960,
-        population: 7823194
-      },
-      {
-        year: 1970,
-        population: 8875083
-      },
-      {
-        year: 1980,
-        population: 9262078
-      },
-      {
-        year: 1990,
-        population: 9295297
-      },
+      null,
+      null,
+      null,
+      null,
       {
         year: 2000,
         population: 9938444
